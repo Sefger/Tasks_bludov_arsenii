@@ -9,17 +9,17 @@
 и особенности (равносторонний, равнобедренный, разносторонний). 
     */
 //Передаём в функции отсортированные стороны
-//Прямоугольный
+
 static double EPS = 1e-10;
-static void swap(double *a, double  *b) {
-    double t = *a;
-    *a = *b;
-    *b = t;
+static void swap(double &a, double  &b) {
+    double t = a;
+    a = b;
+    b = t;
 
 }
-
+//Прямоугольный
 static bool isRightTriangle(double a, double b, double c) {
-    return (c * c - (a * a + b * b) > -EPS && c * c - (a * a + b * b) < EPS);
+    return abs(c * c - (a * a + b * b) < EPS);
 
 }
 //Остроугольный
@@ -68,24 +68,34 @@ static std::string Task4_124(double a, double  b, double c) {
 
 int main()
 {
-    double a = 2 * sqrt(2);
-    double b = 2;
-    double c = 2;
+    std::string aString, bString, cString;
+    std::cout << "Enter a: ";
+    std::cin >> aString;
+    double a = stoi(aString);
+
+
+    std::cout << "Enter b: ";
+    std::cin >> bString;
+    double b = stoi(bString);
+ 
+
+    std::cout << "Enter c: ";
+    std::cin >> cString;
+    double c = stoi(cString);
+   
 
     if (b > c) {
-        swap(&b, &c);
+        swap(b, c);
     }
 
     if (a > c) {
-        swap(&a, &c);
+        swap(a, c);
     }
 
     if (a > b) {
-        swap(&a, &b);
+        swap(a, b);
     }
-    std::cout << a<<std::endl;
-
+    
     std::cout << Task4_124(a, b, c) << std::endl;
-    std::cout << "Hello World!\n";
+    return 0;
 }
-
