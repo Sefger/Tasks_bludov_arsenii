@@ -3,25 +3,32 @@
 Даны вещественные числа a, b, c (a != 0). Выяснить, имеет ли уравнение 
 вещественные корни.
  */
-
-
 #include <iostream>
 #include <sstream>
 #include <vector>;
 static std::vector<double> Task4_13(double a, double b, double c) {
     
-    double D = (b * b - 4 * a * c);
-
+    
+    
     std::vector<double> result = {};
-    if (D < 0  || a==0) {
-
+    if (a == 0) {
+        if (b == 0) {
+            return result;
+        }
+        result.push_back(-c/b);
         return result;
     }
-    double Dsqr = sqrt(D);
-    result.push_back((-b - Dsqr) / 2 * a);
-    result.push_back((-b + Dsqr) / 2 * a);
-    return result;
-
+    double D = (b * b - 4 * a * c);
+    if (D < 0) {
+        
+        return result;
+    }
+    else {
+        double Dsqr = sqrt(D);
+        result.push_back((-b - Dsqr) / 2 * a);
+        result.push_back((-b + Dsqr) / 2 * a);
+        return result;
+    }
 
 }
 int main()
@@ -54,5 +61,6 @@ int main()
     std::cout << std::endl;
     return 0;
 }
+
 
 
