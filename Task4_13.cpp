@@ -2,6 +2,10 @@
 
 #include <iostream>
 #include <vector>;
+/*
+Даны вещественные числа a, b, c (a != 0). Выяснить, имеет ли уравнение 
+вещественные корни.
+ */
 static std::vector<double> Task4_13(double a, double b, double c) {
     
     double D = (b * b - 4 * a * c);
